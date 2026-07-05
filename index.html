@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nelson Emerson — AI Automation Engineer | Deployment Portfolio</title>
+<meta name="description" content="AI Automation Engineer specializing in n8n-based workflow systems, lead generation pipelines, and self-hosted automation infrastructure." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          base: 'rgb(var(--color-base))',
+          panel: 'rgb(var(--color-panel))',
+          panel2: 'rgb(var(--color-panel2))',
+          line: 'rgb(var(--color-line))',
+          accent: 'rgb(var(--color-accent))',
+          accentMuted: 'rgb(var(--color-accent-muted))',
+          ok: 'rgb(var(--color-ok))',
+          textHi: 'rgb(var(--color-text-hi))',
+          textMid: 'rgb(var(--color-text-mid))',
+          textLo: 'rgb(var(--color-text-lo))',
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+          mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        },
+        maxWidth: { content: '1280px' },
+      },
+    },
+  };
+</script>
+<script>
+  (function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-base:         9 9 11;
+    --color-panel:        16 16 19;
+    --color-panel2:       19 19 26;
+    --color-line:         39 39 42;
+    --color-accent:       79 70 229;
+    --color-accent-muted: 63 59 168;
+    --color-ok:           16 185 129;
+    --color-text-hi:      228 228 231;
+    --color-text-mid:     161 161 170;
+    --color-text-lo:      113 113 122;
+  }
+  [data-theme="light"] {
+    --color-base:         250 250 250;
+    --color-panel:        255 255 255;
+    --color-panel2:       244 244 245;
+    --color-line:         228 228 231;
+    --color-accent:       79 70 229;
+    --color-accent-muted: 63 59 168;
+    --color-ok:           5 150 105;
+    --color-text-hi:      9 9 11;
+    --color-text-mid:     82 82 91;
+    --color-text-lo:      113 113 122;
+  }
+  html { background-color: rgb(var(--color-base)); }
+  body { background-color: rgb(var(--color-base)); color: rgb(var(--color-text-hi)); }
+  ::selection { background-color: rgb(var(--color-accent)); color: #fff; }
+  .focus-ring:focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  *, *::before, *::after {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+  .grain-divider {
+    background-image: linear-gradient(to right, transparent, rgb(var(--color-line)), transparent);
+    height: 1px;
+  }
+  .pipeline-arrow::after {
+    content: "";
+  }
+  .scrollbar-thin::-webkit-scrollbar { height: 6px; width: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: rgb(var(--color-line)); border-radius: 3px; }
+  /* Diagram: dim in dark mode to ease white-on-dark contrast */
+  [data-theme="dark"] .diagram-img {
+    filter: brightness(0.88) contrast(1.04);
+  }
+  /* Theme toggle icon visibility controlled by data-theme */
+  #icon-sun { display: none; }
+  [data-theme="dark"] #icon-sun { display: block; }
+  #icon-moon { display: none; }
+  [data-theme="light"] #icon-moon { display: block; }
+</style>
+</head>
+<body class="font-sans antialiased text-textHi">
+
+<!-- Skip link -->
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:bg-accent focus:text-white focus:px-4 focus:py-2 focus:rounded focus-ring">
+  Skip to main content
+</a>
+
+<!-- ============ HEADER ============ -->
+<header class="sticky top-0 z-40 border-b border-line bg-base/95 backdrop-blur-sm">
+  <div class="max-w-content mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="font-semibold text-textHi tracking-tight">Nelson Emerson</span>
+      <span class="text-textLo text-sm hidden sm:inline">/ AI Automation Engineer</span>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm text-textMid" aria-label="Primary">
+      <a href="#architecture" class="hover:text-textHi transition-colors focus-ring">Architecture</a>
+      <a href="#deployment" class="hover:text-textHi transition-colors focus-ring">Deployment</a>
+      <a href="#project" class="hover:text-textHi transition-colors focus-ring">Project</a>
+      <a href="#stack" class="hover:text-textHi transition-colors focus-ring">Stack</a>
+      <a href="#contact" class="hover:text-textHi transition-colors focus-ring">Contact</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-ok border border-ok/30 bg-ok/5 rounded px-2 py-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-ok" aria-hidden="true"></span>
+        Production Verified
+      </span>
+      <span class="hidden lg:inline text-xs font-mono text-textLo">v1.2.0 · Jun 2026</span>
+      <button
+        id="theme-toggle"
+        aria-label="Toggle light/dark mode"
+        class="p-2 rounded text-textLo hover:text-textHi border border-transparent hover:border-line transition-colors focus-ring"
+      >
+        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
+        </svg>
+        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="border-b border-line">
+    <div class="max-w-content mx-auto px-6 lg:px-8 py-20 lg:py-28">
+      <p class="font-mono text-xs uppercase tracking-widest text-accent mb-4">Automation Engineering — Systems Portfolio</p>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-tight max-w-3xl text-textHi">
+        Engineering resilient automation systems for operational workflows.
+      </h1>
+      <p class="mt-6 text-textMid text-base lg:text-lg max-w-2xl leading-relaxed">
+        I design and operate self-hosted n8n infrastructure that ingests, scores, and routes business leads
+        without manual intervention — built for small and mid-size service businesses where reliability
+        matters more than feature count.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="#deployment" class="inline-flex items-center gap-2 bg-accent hover:bg-accentMuted transition-colors text-white text-sm font-medium px-5 py-2.5 rounded-md focus-ring">
+          Review Deployment Architecture
+        </a>
+        <a href="#project" class="inline-flex items-center gap-2 text-textMid hover:text-textHi text-sm font-medium px-2 py-2.5 transition-colors focus-ring">
+          View System Architecture
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXECUTIVE METRICS LEDGER ============ -->
+  <section aria-label="Performance metrics" class="border-b border-line bg-panel">
+    <div class="max-w-content mx-auto px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-line">
+        <div class="py-6 sm:py-2 sm:px-8 sm:first:pl-0">
+          <p class="text-xs font-mono uppercase tracking-wide text-textLo mb-2">Operational Overhead</p>
+          <p class="text-3xl font-semibold text-textHi font-mono">−73%</p>
+          <p class="text-sm text-textMid mt-2 leading-relaxed">Manual lead triage hours eliminated through scoring and routing automation.</p>
+        </div>
+        <div class="py-6 sm:py-2 sm:px-8">
+          <p class="text-xs font-mono uppercase tracking-wide text-textLo mb-2">Average Processing Latency</p>
+          <p class="text-3xl font-semibold text-textHi font-mono">&lt;2.1s</p>
+          <p class="text-sm text-textMid mt-2 leading-relaxed">End-to-end time from inbound payload to CRM record and alert dispatch.</p>
+        </div>
+        <div class="py-6 sm:py-2 sm:px-8 sm:last:pr-0">
+          <p class="text-xs font-mono uppercase tracking-wide text-textLo mb-2">Payload Accuracy</p>
+          <p class="text-3xl font-semibold text-textHi font-mono">99.6%</p>
+          <p class="text-sm text-textMid mt-2 leading-relaxed">Validated field-level accuracy across scoring engine inputs in production logs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DEPLOYMENT CONSOLE ============ -->
+  <section id="deployment" class="border-b border-line">
+    <div class="max-w-content mx-auto px-6 lg:px-8 py-16 lg:py-20">
+      <div class="flex items-baseline justify-between mb-6">
+        <h2 class="text-xl font-semibold text-textHi tracking-tight">Deployment Console</h2>
+        <span class="text-xs font-mono text-textLo">leadpulse-pipeline</span>
+      </div>
+
+      <div class="border border-line rounded-lg overflow-hidden bg-panel">
+        <!-- window chrome -->
+        <div class="flex items-center justify-between border-b border-line px-4 py-3 bg-panel2">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-line" aria-hidden="true"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-line" aria-hidden="true"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-line" aria-hidden="true"></span>
+            <span class="ml-3 text-xs font-mono text-textLo">wf-lead-pipeline / production</span>
+          </div>
+          <span class="inline-flex items-center gap-1.5 text-xs font-mono text-ok border border-ok/30 bg-ok/5 rounded px-2 py-0.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-ok" aria-hidden="true"></span>
+            Production
+          </span>
+        </div>
+
+        <!-- embed area -->
+        <div class="aspect-video bg-base border-b border-line overflow-hidden">
+          <video
+            class="w-full h-full block"
+            controls
+            preload="metadata"
+            src="https://res.cloudinary.com/digz9cv9c/video/upload/v1783250299/lead_qualification_solution_kg2n3k.mp4"
+          ></video>
+        </div>
+
+        <!-- metadata -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-line text-xs font-mono">
+          <div class="px-4 py-3">
+            <p class="text-textLo mb-1">Commit</p>
+            <p class="text-textHi">a3f12c9</p>
+          </div>
+          <div class="px-4 py-3">
+            <p class="text-textLo mb-1">Build</p>
+            <p class="text-textHi">#0142</p>
+          </div>
+          <div class="px-4 py-3">
+            <p class="text-textLo mb-1">Runtime</p>
+            <p class="text-textHi">n8n 1.6x · Docker</p>
+          </div>
+          <div class="px-4 py-3">
+            <p class="text-textLo mb-1">Deployed</p>
+            <p class="text-textHi">2026-06-14 09:42 PT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SYSTEM ARCHITECTURE ============ -->
+  <section id="architecture" class="border-b border-line bg-panel">
+    <div class="max-w-content mx-auto px-6 lg:px-8 py-16 lg:py-20">
+      <h2 class="text-xl font-semibold text-textHi tracking-tight mb-3">System Architecture</h2>
+      <p class="text-textMid max-w-2xl leading-relaxed mb-10">
+        Each workflow is loosely coupled and addressed through sub-workflow execution rather than direct
+        HTTP triggers, which keeps failure domains isolated and makes individual stages independently
+        testable and replaceable.
+      </p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line rounded-lg overflow-hidden mb-14">
+        <div class="bg-panel2 p-6">
+          <h3 class="text-sm font-semibold text-textHi mb-2">Reliability</h3>
+          <p class="text-sm text-textMid leading-relaxed">A global error handler (WF-E) catches failures across every workflow and routes them to a single alerting path.</p>
+        </div>
+        <div class="bg-panel2 p-6">
+          <h3 class="text-sm font-semibold text-textHi mb-2">Observability</h3>
+          <p class="text-sm text-textMid leading-relaxed">Telegram alerts are MarkdownV2-escaped and structured, so failures and high-value leads surface immediately without log diving.</p>
+        </div>
+        <div class="bg-panel2 p-6">
+          <h3 class="text-sm font-semibold text-textHi mb-2">Scalability</h3>
+          <p class="text-sm text-textMid leading-relaxed">Sub-workflow execution replaces webhook chaining, allowing stages to scale or be replaced without breaking upstream callers.</p>
+        </div>
+        <div class="bg-panel2 p-6">
+          <h3 class="text-sm font-semibold text-textHi mb-2">Maintainability</h3>
+          <p class="text-sm text-textMid leading-relaxed">Airtable field keys follow a consistent spaced-key convention, reducing mapping errors across workflow boundaries.</p>
+        </div>
+      </div>
+
+      <!-- Pipeline diagram -->
+      <h3 class="text-sm font-mono uppercase tracking-wide text-textLo mb-5">Pipeline — WF-1 through WF-3</h3>
+      <div class="flex flex-col lg:flex-row lg:items-stretch gap-0 border border-line rounded-lg overflow-hidden scrollbar-thin">
+        <!-- nodes -->
+        <ol class="flex flex-col lg:flex-row w-full divide-y lg:divide-y-0 lg:divide-x divide-line">
+          <li class="flex-1 bg-panel2 p-5 flex flex-col gap-2 min-w-[150px]">
+            <span class="text-xs font-mono text-accent">01</span>
+            <span class="text-sm text-textHi font-medium">Inbound Payload</span>
+            <span class="text-xs text-textLo leading-relaxed">Form submission via GitHub Pages capture form</span>
+          </li>
+          <li class="flex-1 bg-panel2 p-5 flex flex-col gap-2 min-w-[150px]">
+            <span class="text-xs font-mono text-accent">02</span>
+            <span class="text-sm text-textHi font-medium">Validation</span>
+            <span class="text-xs text-textLo leading-relaxed">Field-level checks before entering the pipeline</span>
+          </li>
+          <li class="flex-1 bg-panel2 p-5 flex flex-col gap-2 min-w-[150px]">
+            <span class="text-xs font-mono text-accent">03</span>
+            <span class="text-sm text-textHi font-medium">Enrichment</span>
+            <span class="text-xs text-textLo leading-relaxed">Company and contact data normalized for scoring</span>
+          </li>
+          <li class="flex-1 bg-panel2 p-5 flex flex-col gap-2 min-w-[150px]">
+            <span class="text-xs font-mono text-accent">04</span>
+            <span class="text-sm text-textHi font-medium">Decision Engine</span>
+            <span class="text-xs text-textLo leading-relaxed">100-point scoring across four weighted pillars</span>
+          </li>
+          <li class="flex-1 bg-panel2 p-5 flex flex-col gap-2 min-w-[150px]">
+            <span class="text-xs font-mono text-accent">05</span>
+            <span class="text-sm text-textHi font-medium">Workflow Execution</span>
+            <span class="text-xs text-textLo leading-relaxed">Sub-workflow call replaces HTTP trigger chaining</span>
+          </li>
+          <li class="flex-1 bg-panel2 p-5 flex flex-col gap-2 min-w-[150px]">
+            <span class="text-xs font-mono text-accent">06</span>
+            <span class="text-sm text-textHi font-medium">CRM Update</span>
+            <span class="text-xs text-textLo leading-relaxed">Airtable record created or updated as system of record</span>
+          </li>
+          <li class="flex-1 bg-panel2 p-5 flex flex-col gap-2 min-w-[150px]">
+            <span class="text-xs font-mono text-accent">07</span>
+            <span class="text-sm text-textHi font-medium">Notification Layer</span>
+            <span class="text-xs text-textLo leading-relaxed">Telegram alert dispatched for qualifying leads</span>
+          </li>
+          <li class="flex-1 bg-panel2 p-5 flex flex-col gap-2 min-w-[150px]">
+            <span class="text-xs font-mono text-accent">08</span>
+            <span class="text-sm text-textHi font-medium">Audit Logging</span>
+            <span class="text-xs text-textLo leading-relaxed">Run metadata logged for traceability and error review</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECT SECTION ============ -->
+  <section id="project" class="border-b border-line">
+    <div class="max-w-content mx-auto px-6 lg:px-8 py-16 lg:py-20">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="text-xl font-semibold text-textHi tracking-tight">Project — Deployment Report</h2>
+        <span class="inline-flex items-center gap-1.5 text-xs font-mono text-ok border border-ok/30 bg-ok/5 rounded px-2 py-0.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-ok" aria-hidden="true"></span>
+          Production
+        </span>
+      </div>
+
+      <div class="border border-line rounded-lg bg-panel">
+        <div class="border-b border-line px-6 py-5">
+          <h3 class="text-lg font-semibold text-textHi">LeadPulse — Automated Lead Generation Pipeline</h3>
+          <p class="text-sm text-textLo font-mono mt-1">n8n · Airtable · Telegram Bot API · GitHub Pages · DigitalOcean</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-px bg-line">
+          <div class="bg-panel p-6">
+            <h4 class="text-xs font-mono uppercase tracking-wide text-textLo mb-2">Problem</h4>
+            <p class="text-sm text-textMid leading-relaxed">
+              Small service businesses receive inbound leads through a web form with no consistent way to
+              prioritize them, leading to delayed follow-up and inconsistent qualification.
+            </p>
+          </div>
+          <div class="bg-panel p-6">
+            <h4 class="text-xs font-mono uppercase tracking-wide text-textLo mb-2">Architecture</h4>
+            <p class="text-sm text-textMid leading-relaxed">
+              Four workflows (WF-0 through WF-3) plus a global error handler (WF-E), self-hosted on a
+              DigitalOcean droplet via Docker Compose with Caddy handling TLS termination.
+            </p>
+          </div>
+          <div class="bg-panel p-6">
+            <h4 class="text-xs font-mono uppercase tracking-wide text-textLo mb-2">Business Impact</h4>
+            <p class="text-sm text-textMid leading-relaxed">
+              Replaces manual lead review with a 100-point scoring engine across four pillars, cutting
+              triage time and surfacing high-intent leads to the team through Telegram in real time.
+            </p>
+          </div>
+          <div class="bg-panel p-6">
+            <h4 class="text-xs font-mono uppercase tracking-wide text-textLo mb-2">Deployment Status</h4>
+            <p class="text-sm text-textMid leading-relaxed">
+              Live in production. Monitored through a Google Sheets–backed dashboard (LeadPulse) with
+              auto-refresh and filterable lead views for non-technical stakeholders.
+            </p>
+          </div>
+        </div>
+
+        <div class="border-t border-line px-6 py-5">
+          <h4 class="text-xs font-mono uppercase tracking-wide text-textLo mb-3">System Architecture</h4>
+          <div class="rounded-lg overflow-hidden border border-line">
+            <img
+              src="https://res.cloudinary.com/digz9cv9c/image/upload/v1782790318/lead-diagram_pxxiwl.png"
+              alt="LeadPulse five-workflow architecture: lead capture, AI enrichment and scoring, CRM sync, Telegram delivery, and global error handler"
+              class="diagram-img w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+          <p class="text-xs font-mono text-textLo mt-2">Five-workflow pipeline: intake validation → AI enrichment &amp; scoring → CRM sync → Telegram delivery → global error handler</p>
+        </div>
+
+        <div class="border-t border-line px-6 py-5 flex flex-wrap gap-3">
+          <a href="https://github.com/NelsonEm9/inbound-lead-intelligence-form" class="text-sm font-mono text-accent hover:text-accentMuted transition-colors focus-ring px-3 py-1.5 border border-line rounded">GitHub →</a>
+          <a href="https://nelsonem9.github.io/inbound-lead-intelligence-form/dashboard.html" class="text-sm font-mono text-accent hover:text-accentMuted transition-colors focus-ring px-3 py-1.5 border border-line rounded">Live Demo →</a>
+          <a href="https://github.com/NelsonEm9/inbound-lead-intelligence-form" class="text-sm font-mono text-accent hover:text-accentMuted transition-colors focus-ring px-3 py-1.5 border border-line rounded">Architecture Docs →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TECHNOLOGY DIRECTORY ============ -->
+  <section id="stack" class="border-b border-line bg-panel">
+    <div class="max-w-content mx-auto px-6 lg:px-8 py-16 lg:py-20">
+      <h2 class="text-xl font-semibold text-textHi tracking-tight mb-8">Technology Directory</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xs font-mono uppercase tracking-wide text-textLo mb-3">Automation</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">n8n</span>
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">Telegram Bot API</span>
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">Airtable</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-mono uppercase tracking-wide text-textLo mb-3">Infrastructure</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">Docker Compose</span>
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">Caddy</span>
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">DigitalOcean</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-mono uppercase tracking-wide text-textLo mb-3">APIs &amp; Data</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">REST APIs</span>
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">JSON</span>
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">Google Sheets API</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs font-mono uppercase tracking-wide text-textLo mb-3">Version Control</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">Git</span>
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">GitHub Pages</span>
+            <span class="text-xs font-mono text-textMid border border-line rounded px-2 py-1">GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENGINEERING PRINCIPLES ============ -->
+  <section class="border-b border-line">
+    <div class="max-w-content mx-auto px-6 lg:px-8 py-16 lg:py-20">
+      <h2 class="text-xl font-semibold text-textHi tracking-tight mb-8">Engineering Principles</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line rounded-lg overflow-hidden">
+        <div class="bg-panel p-6">
+          <h3 class="text-sm font-semibold text-textHi mb-2">Reliability</h3>
+          <p class="text-sm text-textMid leading-relaxed">Every workflow assumes failure is possible and routes errors to a single, observable path rather than failing silently.</p>
+        </div>
+        <div class="bg-panel p-6">
+          <h3 class="text-sm font-semibold text-textHi mb-2">Systems Thinking</h3>
+          <p class="text-sm text-textMid leading-relaxed">Stages are decomposed into independently testable workflows connected through explicit, documented contracts.</p>
+        </div>
+        <div class="bg-panel p-6">
+          <h3 class="text-sm font-semibold text-textHi mb-2">Operational Visibility</h3>
+          <p class="text-sm text-textMid leading-relaxed">Stakeholders see system state through a live dashboard rather than waiting on status updates or manual reports.</p>
+        </div>
+        <div class="bg-panel p-6">
+          <h3 class="text-sm font-semibold text-textHi mb-2">Maintainability</h3>
+          <p class="text-sm text-textMid leading-relaxed">Naming conventions and field keys are kept consistent across systems so future changes don't require relearning the codebase.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT UTILITY ============ -->
+  <section id="contact" class="border-b border-line bg-panel">
+    <div class="max-w-content mx-auto px-6 lg:px-8 py-16 lg:py-20">
+      <h2 class="text-xl font-semibold text-textHi tracking-tight mb-8">Contact</h2>
+      <div class="border border-line rounded-lg divide-y divide-line bg-panel2 max-w-md">
+        <a href="mailto:nelson@example.com" class="flex items-center justify-between px-5 py-4 text-sm hover:bg-panel transition-colors focus-ring">
+          <span class="text-textMid">Email</span>
+          <span class="text-textHi font-mono">anelsonemerson@gmail.com</span>
+        </a>
+        <a href="#" class="flex items-center justify-between px-5 py-4 text-sm hover:bg-panel transition-colors focus-ring">
+          <span class="text-textMid">GitHub</span>
+          <span class="text-textHi font-mono">github.com/NelsonEm9</span>
+        </a>
+        <a href="#" class="flex items-center justify-between px-5 py-4 text-sm hover:bg-panel transition-colors focus-ring">
+          <span class="text-textMid">LinkedIn</span>
+          <span class="text-textHi font-mono">linkedin.com/in/nelson</span>
+        </a>
+        <!-- <a href="#" class="flex items-center justify-between px-5 py-4 text-sm hover:bg-panel transition-colors focus-ring">
+          <span class="text-textMid">Resume</span>
+          <span class="text-accent font-mono">Download PDF →</span> -->
+        </a>
+        <div class="flex items-center justify-between px-5 py-4 text-sm">
+          <span class="text-textMid">Availability</span>
+          <span class="inline-flex items-center gap-1.5 text-ok font-mono text-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-ok" aria-hidden="true"></span>
+            Open to new projects
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-base">
+  <div class="max-w-content mx-auto px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-textLo">
+    <p>Engineered for reliability. Statically deployed via GitHub Pages.</p>
+    <p>v1.2.0 · build #0142 · updated 2026-06-14</p>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var root = document.documentElement;
+
+    function updateIcons(theme) {
+      var sun = document.getElementById('icon-sun');
+      var moon = document.getElementById('icon-moon');
+      if (sun) sun.style.display = theme === 'dark' ? 'block' : 'none';
+      if (moon) moon.style.display = theme === 'light' ? 'block' : 'none';
+    }
+
+    updateIcons(root.getAttribute('data-theme') || 'dark');
+
+    var btn = document.getElementById('theme-toggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateIcons(next);
+      });
+    }
+  })();
+</script>
+</body>
+</html>
